@@ -21,10 +21,9 @@ with open('day1/input.txt') as f:
         for i in range(len(num)):
             line = checkForNumAsStr(line, num[i], str(i))
 
-        print(line)
         firstNumber = line[0]
         #take the length of the line as number of digits
-        lastNumber = 'a'
+        lastNumber = ''
                 
 
         #for every digit in the line
@@ -38,7 +37,6 @@ with open('day1/input.txt') as f:
             if (not firstNumber.isnumeric()) and digit.isnumeric():
                 firstNumber = digit
 
-        print(firstNumber + lastNumber)
         tmpNum = str(firstNumber) + str(lastNumber)
         tot += int(tmpNum)
 
