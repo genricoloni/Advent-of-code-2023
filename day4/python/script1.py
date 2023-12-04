@@ -1,8 +1,6 @@
 with open('../input.txt') as f:
     lines = f.readlines()
 
-    
-
     tot = 0
 
     for line in lines:
@@ -12,12 +10,9 @@ with open('../input.txt') as f:
         winningNumbers = set(parts[0].split())
         myNumbers = set(parts[1].split())
 
-        tmpPoints = 0
+        commonNumbers = winningNumbers.intersection(myNumbers)
 
-
-        for number in myNumbers:
-            if number in winningNumbers:
-                tmpPoints = 1 if tmpPoints == 0 else tmpPoints*2
+        tmpPoints = 2**(len(commonNumbers) - 1) if commonNumbers else 0
 
         tot += tmpPoints
 
