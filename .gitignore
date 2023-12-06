@@ -2,6 +2,7 @@ day1/rust/script/Cargo.lock
 day1/rust/script/Cargo.toml
 day1/rust/script/target
 
-
-
+day2/rust/Cargo.lock
+day2/rust/Cargo.toml
+day2/rust/target
 
