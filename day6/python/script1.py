@@ -2,7 +2,6 @@ with open("../input.txt") as f:
     lines = f.readlines()
 
     #for part2, just de comment next line
-    lines = [line.replace(" ", "") for line in lines]
     
     times = list(lines[0].split(":")[1].strip().split("   "))
     distances = list(lines[1].split(":")[1].strip().split("   "))

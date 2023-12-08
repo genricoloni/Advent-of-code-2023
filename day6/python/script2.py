@@ -6,15 +6,17 @@ with open("../input.txt") as f:
 
     #for part2, just de comment next line
     lines = [line.replace(" ", "") for line in lines]
-    
-    times, distances = [list(map(int, line.split(":")[1].strip().split("   "))) for line in lines]
+    times, distances = int(lines[0].split(":")[1].strip().split("   ")[0]), int(lines[1].split(":")[1].strip().split("   ")[0])  
 
-tot = 1
+c = 0
+for i in range(times):
+    if i * (times - i) > distances:
+        c = i
+        break
 
-for time, distance in zip(times, distances):
-    num_of_record_breaks = sum(1 for j in range(1, time) if j * (time - j) > distance)
-    print(num_of_record_breaks)
-    tot *= num_of_record_breaks
+print(times -2*c + 1) #+1 for the 'middle' element
 
-print(tot)
+#as one line
+# print((times - 2 * next(i for i in range(times) if i * (times - i) > distances)) + 1 if distances % 2 == 0 else (times - 2 * next(i for i in range(times) if i * (times - i) > distances) ))
+
 

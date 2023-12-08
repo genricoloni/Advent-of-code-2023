@@ -53,7 +53,6 @@ with open("../input.txt", "r") as f:
             #create a rank with card value and its occurrence
             rank = [{card: hand.count(card)} for card in hand]
 
-
             #remove duplicated keys
             rank = [dict(t) for t in {tuple(d.items()) for d in rank}]
 
@@ -64,7 +63,6 @@ with open("../input.txt", "r") as f:
 
             #take only the top letter which have the same occurrence
             rank = [x for x in rank if list(x.values())[0] == list(rank[0].values())[0]]
-            #print(rank)
 
             #now convert using order vector
             newRank = []
@@ -72,7 +70,6 @@ with open("../input.txt", "r") as f:
                 newRank.append({list(r.keys())[0]: order[list(r.keys())[0]]})
 
             newRank.sort(key=lambda x: list(x.values())[0])
-            #print(rank, "->", newRank, end=' top:')
             #now take the first element of rank and substitute in hand all the J with the letter of the first element in rank
             letter = list(newRank[0].keys())[0]
 
@@ -95,14 +92,11 @@ with open("../input.txt", "r") as f:
 
     hands.sort(key=lambda x: (x["rank"], [order[card] for card in x["hand"]]), reverse=True)
     
-    #for i in range(len(hands)):
-    #    print(hands[i])
 
     win, count = 0,1
 
     for hand in hands:
         win += (hand["bid"]*count)
-        #print("bid:",hand["bid"], "rank:",count, "win:",hand["bid"]*count)
         count += 1
 
 
