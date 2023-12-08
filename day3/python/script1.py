@@ -17,7 +17,6 @@ with open('../input.txt') as f:
 
 
     for j in range(len(matrix)):
-        #print(matrix[j])
         firstIndex = -1
         lastIndex = -1
 
@@ -36,7 +35,6 @@ with open('../input.txt') as f:
             if (((not matrix[j][i].isnumeric()) and lastIndex != -1) or (i+1) == len(matrix[j])) and (lastIndex != -1 and firstIndex != -1):
                 #check if there are symbols near the number
                 # check for upper e down lines, and diagonals of first and last element
-                print("checki for prev",tmpnum, firstIndex, lastIndex)
 
                 prev = ''
 
@@ -60,7 +58,6 @@ with open('../input.txt') as f:
                     #edge case when the last index is at the end of the line
                     if not (lastIndex + 1 >= len(matrix[j-1])):
                         #it the previous index is not negative
-                        print("prev diagonal:", matrix[j-1][lastIndex+1])
                         #append to the string
                         prev += str(matrix[j-1][lastIndex+1])
 
@@ -68,10 +65,8 @@ with open('../input.txt') as f:
                 #edge case when element is the first element of the line
                 if not (firstIndex - 1 < 0):
                     #it the previous index is not negative
-                    print("current diagonal:", matrix[j][firstIndex-1])
                     #append to the string
                     prev += str(matrix[j][firstIndex-1])
-                    print("current after:", prev)   
 
                 #edge case when element is the last element of the line
                 if not (lastIndex + 1 >= len(matrix[j])):
@@ -97,11 +92,9 @@ with open('../input.txt') as f:
                     #edge case when the last index is at the end of the line
                     if not (lastIndex + 1 >= len(matrix[j+1])):
                         #it the previous index is not negative
-                        print("next diagonal:", matrix[j+1][lastIndex+1])
                         #append to the string
                         prev += str(matrix[j+1][lastIndex+1])         
 
-                print(prev)
 
                 for elem in prev:
                     if elem in sym:

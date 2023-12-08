@@ -21,8 +21,6 @@ startingNodes = [node["name"] for node in nodes if regex.match(node["name"])]
 regex = re.compile('..Z')
 destinationNodes = [node["name"] for node in nodes if regex.match(node["name"])]
 
-
-
 counts = []
 
 #starts with the nodes which names ends with A
@@ -42,8 +40,6 @@ for startingNode in startingNodes:
         count += 1
     
     counts.append(count)
-    
-    
 
 #print the lcm of counts
 print(lcm(*counts))
