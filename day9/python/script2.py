@@ -5,7 +5,6 @@ with open("../input.txt") as f:
 
     for line in lines:
         newline = list(line.split(" "))
-        print(newline)
     
         num = 0
         sign = 1
@@ -21,7 +20,6 @@ with open("../input.txt") as f:
             
             newline = result
             
-
         tot += num
 
     print(tot)

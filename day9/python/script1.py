@@ -5,9 +5,7 @@ with open("../input.txt") as f:
 
     for line in lines:
         newline = list(line.split(" "))
-        print(newline)
         
-
         num = 0
 
         while any(newline):
@@ -19,7 +17,6 @@ with open("../input.txt") as f:
                 result.append(int(newline[i]) - int(newline[i - 1]))
             
             newline = result
-            print(newline, num)
             
 
         tot += num
