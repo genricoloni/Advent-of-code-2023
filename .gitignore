@@ -14,3 +14,7 @@ day03/rust/rust/target
 day04/rust/Cargo.lock
 day04/rust/Cargo.toml
 day04/rust/target
+
+day05/rust/Cargo.lock
+day05/rust/Cargo.toml
+day05/rust/target

@@ -3,12 +3,14 @@ def initialize_matrix(input_data):
     starting_positions = {
         min((row.find("S"), index) for index, row in enumerate(input_data) if "S" in row)
     }
-    return input_data, starting_positions, set(), -2
+    return input_data, starting_positions
 
 # Read input data from the file and initialize variables
 file_path = "../input.txt"
 input_data = open(file_path, "r").read().strip().split()
-matrix, current_positions, visited_position, n = initialize_matrix(input_data)
+matrix, current_positions = initialize_matrix(input_data)
+visited_position = set()
+n = -2
 
 # Main loop for grid traversal
 while current_positions:
