@@ -1,17 +1,14 @@
 
 #function that check if the string contains a number spelled, then replace all of its occurrences with the actual number
-def checkForNumAsStr(line, numAsStr, num):
-    while numAsStr in line:
-        #double the first and the last char of the wirtten number
-        toReplace = numAsStr[0] + num + numAsStr[-1]
+def checkForNumAsStr(line,  n):
 
-        line = line.replace(numAsStr, toReplace)
-    return line
+    return checkForNumAsStr(line.replace(num[int(n)], num[int(n)][0] + n + num[int(n)][-1]) , n) if num[int(n)] in line else line
+
 
 #spell the numbers
 num = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
-with open('day1/input.txt') as f:
+with open('../input.txt') as f:
     lines = f.readlines()
 
     tot = 0
@@ -19,26 +16,22 @@ with open('day1/input.txt') as f:
     #for each line
     for line in lines:
         for i in range(len(num)):
-            line = checkForNumAsStr(line, num[i], str(i))
+            line = checkForNumAsStr(line, str(i))
 
-        firstNumber = line[0]
-        #take the length of the line as number of digits
-        lastNumber = ''
-                
+        firstNumber, lastNumber = ' ', ' '
 
-        #for every digit in the line
-        for digit in line:
+        #for every char in the line
+        for char in line:
 
-            if digit.isnumeric():
+            if char.isnumeric():
                 #variable will be replaced is necessary
-                lastNumber = digit
+                lastNumber = char
                 
-            #if firstNumber is not a number, then check if we can set the current digit as first number
-            if (not firstNumber.isnumeric()) and digit.isnumeric():
-                firstNumber = digit
+                #if firstNumber is not a number, then check if we can set the current char as first number
+                if (not firstNumber.isnumeric()):
+                    firstNumber = char
 
-        tmpNum = str(firstNumber) + str(lastNumber)
-        tot += int(tmpNum)
+        tot += int(str(firstNumber) + str(lastNumber))
 
-    print(tot)           
+print(tot)           
 

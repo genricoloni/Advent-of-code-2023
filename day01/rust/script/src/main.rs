@@ -8,10 +8,9 @@ fn part1(){
     let mut tot = 0;
 
     for line in lines {
-        println!("{}", line);
 
-        let mut firstNumber = 'a';
-        let mut lastNumber = 'a';
+        let mut firstNumber = ' ';
+        let mut lastNumber = ' ';
         
         for c in line.chars() {
             if !firstNumber.is_numeric() {
@@ -24,39 +23,23 @@ fn part1(){
             
         }
         //string concatenation
-        let mut result = String::new();
-        result.push(firstNumber);
-        result.push(lastNumber);
+        tot  += format!("{}{}", firstNumber, lastNumber).parse::<i32>().unwrap();
 
-
-        //convert to integer
-        let mut n = result.parse::<i32>().unwrap();
-        tot += n;
     }
     println!("{}", tot);
 }
 
 fn check_for_num_as_string(line: &str, num_as_string: &str, i: i32) -> String {
-    let mut result = String::new();
+    // Take the first and last letters of num_as_string
+    let first_letter = num_as_string.chars().next().unwrap();
+    let last_letter = num_as_string.chars().last().unwrap();
 
-    // take the first and last letter of num_as_string
-    let first_letter = num_as_string.chars().nth(0).unwrap();
-    let last_letter = num_as_string.chars().nth(num_as_string.len() - 1).unwrap();
+    // Create the replacement string
 
-    // push the first letter
-    result.push(first_letter);
-
-    // push the number
-    result.push_str(i.to_string().as_str());
-
-    // push the last letter
-    result.push(last_letter);
-
-    // replace all occurrences of num_as_string with result in line
-    let modified_line = line.replace(num_as_string, result.as_str());
-
-    modified_line
+    // Replace all occurrences of num_as_string with replacement in line
+    line.replace(num_as_string, &format!("{}{}{}", first_letter, i, last_letter))
 }
+
 
 
 fn part2() {
@@ -92,13 +75,7 @@ fn part2() {
         }
 
         // string concatenation
-        let mut result = String::new();
-        result.push(first_number);
-        result.push(last_number);
-
-        // convert to integer
-        let n = result.parse::<i32>().unwrap();
-        tot += n;
+        tot += format!("{}{}", first_number, last_number).parse::<i32>().unwrap();
     }
 
     println!("{}", tot);
@@ -108,7 +85,7 @@ fn part2() {
 fn main() {
 
     
-    //part1();
+    part1();
     part2();
 
 
