@@ -14,14 +14,10 @@ with open("../input.txt") as f:
         distance = int(distances[i])
 
         for j in range(1, time):
-            remainingTime = time - j
+            distance = j * (time - j)
 
-            distance = j * remainingTime
-
-            if distance > int(distances[i]):
-                nunOfRecordBreak += 1
+            nunOfRecordBreak = nunOfRecordBreak + 1 if distance > int(distances[i]) else nunOfRecordBreak
             
-        print(nunOfRecordBreak)
         tot *= nunOfRecordBreak
 
     print(tot)
