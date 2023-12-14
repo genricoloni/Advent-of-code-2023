@@ -27,20 +27,13 @@ rows = [i for i, row in enumerate(new_matrix) if not any(char.isdigit() for char
 cols = [i for i in range(len(new_matrix[0])) if not any(row[i].isdigit() for row in new_matrix)]
 
 # Adjust coordinates based on rows and columns without numbers
-for i, (original_x, original_y) in enumerate(coords):
-    for j in range(len(rows)):
-        if original_x > rows[j]:
-            coords[i] = (coords[i][0] + 1000000 - 1, coords[i][1])
-    for k in range(len(cols)):
-        if original_y > cols[k]:
-            coords[i] = (coords[i][0], coords[i][1] + 1000000 - 1)
+coords = [(x + sum(1000000 for r in rows if x > r), y + sum(1000000 for c in cols if y > c)) for x, y in coords]
 
 # Find distances in a single loop
 tot = 0
 for i in range(1, index):
-    for j in range(1, index):
-        if i > j:
-            tot += cityblock(coords[i - 1], coords[j - 1])
+    for j in range(i + 1, index):
+        tot += cityblock(coords[i - 1], coords[j - 1])
 
 # Print total distance
 print(f"Total distance: {tot}")
